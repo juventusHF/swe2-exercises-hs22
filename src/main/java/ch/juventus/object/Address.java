@@ -1,23 +1,8 @@
 package ch.juventus.object;
 
-public class Address {
+import java.util.Objects;
 
-    private final String street;
-    private final int number;
-    private final int zip;
-    private final String city;
-
-
-    public Address(String street, int number, int zip, String city) {
-        this.street = street;
-        this.number = number;
-        this.zip = zip;
-        this.city = city;
-    }
-
-    public String getStreet() {
-        return street;
-    }
+public record Address(String street, int number, int zip, String city) {
 
     public int getNumber() {
         return number;
@@ -39,5 +24,18 @@ public class Address {
                 ", zip=" + zip +
                 ", city='" + city + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Address address = (Address) o;
+        return number == address.number && zip == address.zip && Objects.equals(street, address.street) && Objects.equals(city, address.city);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(street, number, zip, city);
     }
 }
