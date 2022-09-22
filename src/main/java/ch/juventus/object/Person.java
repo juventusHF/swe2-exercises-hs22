@@ -6,9 +6,9 @@ public class Person {
 
     private final String firstName;
     private final String lastName;
-    private final Address address;
-    private final int age;
-    private final boolean hasPet;
+    private Address address;
+    private int age;
+    private boolean hasPet;
 
 
     public Person(String firstName, String lastName, Address address, int age, boolean hasPet) {
@@ -17,6 +17,11 @@ public class Person {
         this.address = address;
         this.age = age;
         this.hasPet = hasPet;
+    }
+
+    public Person(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public String getFirstName() {
