@@ -30,7 +30,7 @@ public class MapFilter {
         Iterator<Map.Entry<K, V>> iterator = output.entrySet().iterator();
         while(iterator.hasNext()) {
             Map.Entry<K, V> entry = iterator.next();
-            if (entry.getValue() != value) {
+            if (!entry.getValue().equals(value)) {
                 iterator.remove();
             }
         }
@@ -44,7 +44,7 @@ public class MapFilter {
         }
 
         Map<K, V> output = new HashMap<>(input);
-        output.entrySet().removeIf(entry -> entry.getValue() != value);
+        output.entrySet().removeIf(entry -> !entry.getValue().equals(value));
         return output;
     }
 
