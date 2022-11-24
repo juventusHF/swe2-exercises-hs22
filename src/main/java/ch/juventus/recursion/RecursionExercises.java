@@ -5,7 +5,7 @@ import java.util.List;
 public class RecursionExercises {
 
     private static int recursionCounter = 0;
-    private static List<String> testInputs = List.of(
+    private static final List<String> testInputs = List.of(
             "Anna",
             "Korb",
             "Bob",
