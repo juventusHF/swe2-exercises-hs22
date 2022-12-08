@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Person {
 
     private final String firstName;
-    private final String lastName;
+    private String lastName;
     private Address address;
     private int age;
     private boolean hasPet;
@@ -22,6 +22,11 @@ public class Person {
     public Person(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    public Person(String firstName, int age) {
+        this.firstName = firstName;
+        this.age = age;
     }
 
     public String getFirstName() {
