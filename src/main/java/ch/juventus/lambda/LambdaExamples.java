@@ -5,6 +5,7 @@ import ch.juventus.object.Person;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class LambdaExamples {
@@ -54,6 +55,19 @@ public class LambdaExamples {
                 .allMatch(age -> age > 18);
 
         System.out.println(allOlderThan18);
+
+        // Optionals Übung
+        List<String> optionalsInput = List.of("a", "b", "c", "d");
+
+        Optional<String> result = optionalsInput.stream()
+                .filter(character -> character.equals("b"))
+                .findAny();
+        System.out.println(result.orElse("Not found"));
+
+        Optional<String> result2 = optionalsInput.stream()
+                .filter(character -> character.equals("z"))
+                .findAny();
+        System.out.println(result2.orElse("Not found"));
     }
 
     private static int operate(int a, int b, MathOperation mathOperation) {
