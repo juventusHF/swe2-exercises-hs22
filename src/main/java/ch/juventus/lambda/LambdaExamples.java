@@ -2,6 +2,7 @@ package ch.juventus.lambda;
 
 import ch.juventus.object.Person;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.function.Function;
@@ -14,7 +15,7 @@ public class LambdaExamples {
         System.out.println(dateConverter.apply(new Date()));
 
         // Übung 2
-        MathOperation addition = (a, b) -> a + b;
+        MathOperation addition = Integer::sum;
         MathOperation subtraction = (a, b) -> a - b;
         MathOperation multiplication = (a, b) -> a * b;
         MathOperation division = (a, b) -> a / b;
@@ -31,7 +32,7 @@ public class LambdaExamples {
         );
 
         List<Integer> output = input.stream()
-                .flatMap(list -> list.stream())
+                .flatMap(Collection::stream)
                 .map(n -> n * 2)
                 .distinct()
                 .sorted()
@@ -49,11 +50,10 @@ public class LambdaExamples {
 
         boolean allOlderThan18 = personInput.stream()
                 .filter(person -> !person.getFirstName().toLowerCase().startsWith("a"))
-                .map(person -> person.getAge())
+                .map(Person::getAge)
                 .allMatch(age -> age > 18);
 
         System.out.println(allOlderThan18);
-
     }
 
     private static int operate(int a, int b, MathOperation mathOperation) {
